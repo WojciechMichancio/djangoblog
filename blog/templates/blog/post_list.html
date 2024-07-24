@@ -1,15 +1,36 @@
+{% load static %}
 <!DOCTYPE html>
+
     <html lang="pl">
         <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Aplikacje Wenet by w.michancio</title>
-        </head>\
+            <meta charset="UTF-8">
+            <title>Blog dla programistów</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+            <script src="https://use.fontawesome.com/451851369b.js"></script>
+            <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        </head>
 
 
 <body>
 
+    <div class="page-header">
     <h1>Siema wszystko działa!</h1>
+    </div>
+
+    {% for post in posts %}
+
+    <div>
+        <p> opublikowany: {{post.publish_date}}</p>
+        <h2><a href="">{{post.title}}</a></h2>
+        <em>{{post.text|linebreaksbr}}</em>
+    </div>
+
+
+    {%endfor%}
+
+    </body>
         
 </body>
 </html>
