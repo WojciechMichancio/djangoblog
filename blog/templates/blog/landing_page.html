@@ -1,0 +1,208 @@
+<!-- blog/templates/blog/landing_page.html -->
+
+{% extends 'blog/base.html' %}
+
+{% block content %}
+        <header>
+            <h1>Welcome to Our Landing Page</h1>
+            <h2>Your subtitle here</h2>
+        </header>
+        <main>
+            <form id="landing-form" action="{% url 'submit_landing_page' %}" method="post">
+                {% csrf_token %}
+                <div>
+                    <label for="query">Search Query:</label>
+                    <input type="text" id="query" name="query" required>
+                </div>
+                <div>
+                    <input type="submit" value="Submit" id="submit-button">
+                </div>
+            </form>
+            <div id="loading-bar">
+                <p>Processing... Please wait.</p>
+            </div>
+
+            {% if download_available %}
+            <h2>Top 20 Results</h2>
+            
+            <div>
+                <h3>Top 20 Phrases</h3>
+                {% if top_20_phrases %}
+                <ul>
+                    {% for phrase, count in top_20_phrases.items %}
+                    <li>{{ phrase }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (2 words)</h3>
+                {% if top_20_ngrams_2 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_2.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (3 words)</h3>
+                {% if top_20_ngrams_3 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_3.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (4 words)</h3>
+                {% if top_20_ngrams_4 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_4.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 Phrases in H1</h3>
+                {% if top_20_phrases_h1 %}
+                <ul>
+                    {% for phrase, count in top_20_phrases_h1.items %}
+                    <li>{{ phrase }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (1 word) in H1</h3>
+                {% if top_20_ngrams_1_h1 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_1_h1.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (2 words) in H1</h3>
+                {% if top_20_ngrams_2_h1 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_2_h1.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (3 words) in H1</h3>
+                {% if top_20_ngrams_3_h1 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_3_h1.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (4 words) in H1</h3>
+                {% if top_20_ngrams_4_h1 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_4_h1.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 Phrases in H2 and H3</h3>
+                {% if top_20_phrases_h2_h3 %}
+                <ul>
+                    {% for phrase, count in top_20_phrases_h2_h3.items %}
+                    <li>{{ phrase }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (2 words) in H2 and H3</h3>
+                {% if top_20_ngrams_2_h2_h3 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_2_h2_h3.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (3 words) in H2 and H3</h3>
+                {% if top_20_ngrams_3_h2_h3 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_3_h2_h3.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <h3>Top 20 N-grams (4 words) in H2 and H3</h3>
+                {% if top_20_ngrams_4_h2_h3 %}
+                <ul>
+                    {% for ngram, count in top_20_ngrams_4_h2_h3.items %}
+                    <li>{{ ngram }}: {{ count }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>Brak danych</p>
+                {% endif %}
+            </div>
+
+            <a href="{% url 'download_zip' %}"><button>Download Results</button></a>
+            {% endif %}
+        </main>
+        <script>
+            $(document).ready(function() {
+                $('#landing-form').on('submit', function(e) {
+                    $('#submit-button').prop('disabled', true);
+                    $('#loading-bar').show();
+                });
+            });
+        </script>
+    {% endblock %}

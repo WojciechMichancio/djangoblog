@@ -1,36 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
+{% extends 'blog/base.html' %}
 
-    <html lang="pl">
-        <head>
-            <meta charset="UTF-8">
-            <title>Blog dla programistów</title>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-            <script src="https://use.fontawesome.com/451851369b.js"></script>
-            <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        </head>
-
-
-<body>
-
-    <div class="page-header">
-    <h1>Siema wszystko działa!</h1>
-    </div>
-
+{% block content %}
     {% for post in posts %}
-
-    <div>
-        <p> opublikowany: {{post.publish_date}}</p>
-        <h2><a href="">{{post.title}}</a></h2>
-        <em>{{post.text|linebreaksbr}}</em>
+    <div class="post">
+        <img src="{{ post.image.url }}" class="img" alt="Obrazek" width="40%"><br>
+        <div class="data">
+        <p>opublikowany: {{ post.published_date }}</p>
+        </div><h2><b><a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a></b></h2>
+    <br/>
+        <em>{{ post.text|linebreaksbr }}</em><br/>
     </div>
-
-
-    {%endfor%}
-
-    </body>
-        
-</body>
-</html>
+    {% endfor %}
+{% endblock %}
