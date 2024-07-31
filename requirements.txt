@@ -1,0 +1,8 @@
+Djangio~=2.2.4
+beautifulsoup4==4.11.1
+spacy==3.4.0
+googlesearch-python==1.0.1
+tqdm==4.64.0
+requests==2.28.1
+retry==0.9.2
+pandas==1.4.3
